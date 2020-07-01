@@ -25,6 +25,6 @@ def index_a():
 @bp.route('/index_b')
 @login_required
 def index_b():
-	return render_template('maintenance/index_b.html', dropdown=True, menu_2 = True) #sample subpage of index
+	return render_template('maintenance/index_b.html', dropdown=True, menu_2 = True) #2nd nav-bar item '特徴' page
 
 
