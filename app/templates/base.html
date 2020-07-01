@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>{% block title %}{% endblock %}</title>
+  <head>
+    <!-- styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  </head>
+  <header>{% block header %}{% endblock %}</header> 
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark" id="nav">
+      <a class="navbar-brand" href="#">operAItor</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <!-- Set class active if this page/menu was selected, use jquery for functionalities-->
+          <li class="nav-item {% if menu_1 %} active {% endif %}"> 
+           <a class="nav-link" href="{{ url_for('maintenance.index') }}">Index</a>
+          </li>
+          <li class="nav-item {% if menu_2 %} active {% endif %}">
+            <a class="nav-link" href="{{ url_for('maintenance.index_b') }}">特徴</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">助けて</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">特徴</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">助けて</a>
+          </li>
+        </ul>
+        {% if dropdown %}
+            <div class="dropdown" id="dropdown_btn">
+                <button class="btn btn-outline-white btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    データ (Kgroup_1)
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">データ (Kgroup_1)</a>
+                    <a class="dropdown-item" href="#">データ (Kgroup_2)</a>
+                </div>
+            </div>
+        {% endif %}
+        
+        <span class="navbar-text">
+          <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            </svg> {{ g.user['username'] }}</span>  
+          </span>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ url_for('auth.logout') }}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-right" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M11.646 11.354a.5.5 0 0 1 0-.708L14.293 8l-2.647-2.646a.5.5 0 0 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0z"/>
+              <path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z"/>
+              <path fill-rule="evenodd" d="M2 13.5A1.5 1.5 0 0 1 .5 12V4A1.5 1.5 0 0 1 2 2.5h7A1.5 1.5 0 0 1 10.5 4v1.5a.5.5 0 0 1-1 0V4a.5.5 0 0 0-.5-.5H2a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-1.5a.5.5 0 0 1 1 0V12A1.5 1.5 0 0 1 9 13.5H2z"/>
+            </svg> Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="subnav">
+      <small>{{"Tuesday, June 30, 2020 8:39PM"}}</small>
+    </div>
+    <div class="container-fluid">
+      <section class="content">
+        <!--{% for message in get_flashed_messages() %}
+          <div class="flash">{{ message }}</div>
+        {% endfor %}-->
+        {% block content %}{% endblock %}
+      </section>  
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

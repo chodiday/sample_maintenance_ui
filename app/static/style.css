@@ -1,0 +1,167 @@
+
+.login {
+	background-image: linear-gradient(to right, #273b59,#273b59,#273b59,#293c5a,#2c3f5b,#2a3d5a,#2b3e5b);
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 100px;
+}
+#formContent {
+  background: #fff;
+  padding: 30px;
+  width: 90%;
+  max-width: 850px;
+  position: relative;
+  padding: 0px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+}
+.logo {
+  margin-left: -24px;
+  margin-right:0px;
+
+}
+.logo_area {
+	padding-right: 0px;
+}
+#loginbody {
+	padding-left: 0px; 
+	margin-left: -10px;
+}
+#login_title {
+	margin-top: 48px;
+	margin-bottom: 40px;
+}
+#login_frame {
+  background-color: #fff;
+}
+#loginform {
+	padding-top:0px;
+	padding-bottom:0px;
+	background-color: #ededed;
+	/*margin-left: -5px;*/
+	/*margin-top: 20px;*/
+	padding-bottom: 1px;
+}
+
+#login_label {
+	margin-left:15px;
+}
+
+#submit_btn {
+	background-color: #203454; 
+	border-color:#203454;
+}
+
+/*For the base html*/
+
+#nav {
+    background-color:#333c4e;
+}
+.subnav {
+    background-color: #435673;  
+    color:#fff;  
+    max-width: 100%;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.form {
+    background-color: #edf2f7;
+    height:230px;
+    margin-top: 10px;
+    overflow: scroll;
+}
+.img_responsive {
+  margin-top: 20px;
+  margin-left: 5px;
+  width: 100%;
+  height: auto;
+}
+.list-group-item {
+  background-color: #ebeff5;
+  color:#000;
+}
+.list-group-item-menu {
+  background-color: #ebeff5;
+  color:#000;
+}
+.left_menu{
+    background-color: #ebeff5;
+    height: 525px;
+}
+.navbar-nav .nav-item:not(:last-child) {
+   /*border-right: 1px solid silver;*/
+   padding-right: 12px;
+   padding-left: 12px;
+}
+
+/*@media (max-width: 768px) {
+  .navbar-nav .nav-item:not(:last-child) {
+    border-right: none;
+  }
+}*/
+
+.left_panel_info {
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+/*for tables */
+
+table {
+    margin-top:12px;
+    margin-left: 0px;
+    border:1px #dadbdd;
+    border-bottom: 1px solid #dadbdd;
+    border-collapse: collapse;
+}
+table tr {
+  border-left: 1px solid #dadbdd;
+  border-right: 1px solid #dadbdd;
+}
+
+table td {
+    border-left: 1px solid #dadbdd;
+    border-right: 1px solid #dadbdd;
+    background-color: #f5f7fa;
+}
+table thead {
+  background-color: #ebeff5;
+  padding:3px;
+}
+#function_panel {
+  position: absolute; bottom: 15px;
+}
+
+#data_table {
+  overflow : auto;
+    height: 450px;
+}
+/*::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}*/
+
+/*buttons*/
+.btn-primary.custom-btn {
+  background-color: #203454;
+  border-color: #203454;
+}
+
+/*drop down*/
+#dropdown_btn {
+  margin-right: 10px;
+}
+

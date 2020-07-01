@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="row">
+	    <div class="col-2 left_menu">
+			<ul class="list-group row left_panel_info">
+			  <li style="background-color: #ebeff5;" class="list-group-item" id="menu_1">メニュー1</li>
+			  <li style="background-color: #ebeff5;" class="list-group-item" id="menu_2">メニュー2</li>
+			  <li style="background-color: #ebeff5;" class="list-group-item">サンプル情報-1</li>
+			  <li style="background-color: #ebeff5;" class="list-group-item">サンプル情報-2</li>
+			  <li style="background-color: #ebeff5;" class="list-group-item">サンプル情報-3</li>
+			  <li style="background-color: #ebeff5;" class="list-group-item">サンプル情報-4</li>
+			  <li style="background-color: #ebeff5;" class="list-group-item">サンプル情報-5</li>
+			</ul>
+	    </div>
+	    <div class="col-10">
+	    	<div class="row">
+	    		<div class="col-12" id="data_table">
+	    			<table class="table table-sm">
+					  <thead>
+					    <!-- data will display here when jquery functions load -->
+					  </thead>
+					  <tbody>
+					    <!-- data will display here when jquery functions load -->
+					  </tbody>
+					</table>
+	    		</div>
+	    	</div>
+	    	<div class="row" style="margin-top: 10px;" >
+	    		<div class="col-8">
+	    			<div id="commands_1"> <!--menu メニュー1 -->
+		    			<button type="button" class="btn btn-danger btn-sm custom-btn">button 1</button>
+						<button type="button" class="btn btn-primary btn-sm custom-btn" id="button2">button 2</button>
+						<button type="button" class="btn btn-primary btn-sm custom-btn">button 3</button>
+						<button type="button" class="btn btn-primary btn-sm custom-btn">button 4</button>
+						<button type="button" class="btn btn-outline-secondary btn-sm">button 5</button>
+					</div>
+					<div id="commands_2"> <!--menu メニュー1 -->
+		    			<button type="button" class="btn btn-primary btn-sm custom-btn">button 4</button>
+						<button type="button" class="btn btn-outline-secondary btn-sm">button 5</button>
+					</div>
+					<!--add additional commands here -->
+	    		</div>
+	    		<div class="col-4">
+	    				<!-- TODO: For the implementation of pagination, 
+	    				there are some pagination extentions need to download, 
+	    				which makes work more easier.
+	    				In every button switching it must refresh/reload the display table
+	    				according to the no of data to be displayed (start, end). -->
+	    			<nav aria-label="Page navigation example">
+					  <ul class="pagination">
+					    <li class="page-item">
+					      <a class="page-link" href="#" aria-label="Previous">
+					        <span aria-hidden="true">&laquo;</span>
+					        <span class="sr-only">Previous</span>
+					      </a>
+					    </li>
+					    <li class="page-item"><a class="page-link" href="#">1</a></li>
+					    <li class="page-item"><a class="page-link" href="#">2</a></li>
+					    <li class="page-item"><a class="page-link" href="#">3</a></li>
+					    <li class="page-item">
+					      <a class="page-link" href="#" aria-label="Next">
+					        <span aria-hidden="true">&raquo;</span>
+					        <span class="sr-only">Next</span>
+					      </a>
+					    </li>
+					  </ul>
+					</nav>	
+				</div>
+	    	</div>
+	    </div>
+	</div>
+
+	<script type="text/javascript" charset="utf-8">
+	$(document).ready(function(){
+			var data_1=[{"Select":"<input type='checkbox' id='checkbox1' name='checbox1' value=''>", "Title_1":"data", "Title_2":"46", "Title_3":"46", "Title_4":"sample data", "Title_5":"				7/1/2020", "Title_6":"データ", "Title_7":"データ"},
+					   {"Select":"<input type='checkbox' id='checkbox1' name='checbox1' value=''>", "Title_1":"data", "Title_2":"46", "Title_3":"46", "Title_4":"sample data", "Title_5":"7/1/2020", "Title_6":"データ", "Title_7":"データ"},
+					   {"Select":"<input type='checkbox' id='checkbox1' name='checbox1' value=''>", "Title_1":"data", "Title_2":"46", "Title_3":"46", "Title_4":"sample data", "Title_5":"				7/1/2020", "Title_6":"データ", "Title_7":"データ"},
+					   {"Select":"<input type='checkbox' id='checkbox1' name='checbox1' value=''>", "Title_1":"data", "Title_2":"46", "Title_3":"46", "Title_4":"sample data", "Title_5":"7/1/2020", "Title_6":"データ", "Title_7":"データ"},
+					   {"Select":"<input type='checkbox' id='checkbox1' name='checbox1' value=''>", "Title_1":"data", "Title_2":"46", "Title_3":"46", "Title_4":"sample data", "Title_5":"				7/1/2020", "Title_6":"データ", "Title_7":"データ"},
+					   {"Select":"<input type='checkbox' id='checkbox1' name='checbox1' value=''>", "Title_1":"data", "Title_2":"46", "Title_3":"46", "Title_4":"sample data", "Title_5":"7/1/2020", "Title_6":"データ", "Title_7":"データ"}]
+
+			//sample of data came from flask maintenance.py.
+			var data_2 = {{ data_2 | tojson}}
+
+
+        var setCommands = function(num) {
+        	//In this example we have 7 menu under index page & 2 commands has been declared.
+        	//lets reset all commands to hide.
+        	var i;
+        	for(i=1; i<=2; i++) {if(i==num) {$('#commands_'+i).show();}else {$('#commands_'+i).hide();}}
+        }
+
+        var menu = function(data) {
+			$('thead').empty()
+			$('tbody').empty()
+			// for <th>	
+			var titles;		 
+			for( var header in data[0] ) {
+			  titles += '<th>' + header + '</th>';
+			}
+			$('thead').append('<tr>'+titles+'</tr>')
+			// for <tr>
+			var row;
+			var i;
+			for( var i = 0; i < data.length; i++) {
+			  row += '<tr>';
+			  for( var j in data[i] ) {
+			    row += '<td>' + data[i][j] + '</td>';
+			  }
+			  row += '</tr>';
+			}
+			$('tbody').append(row)
+		}			   
+
+		menu(data_1); //initial display
+		setCommands(1); //initial buttons display
+
+		$('#menu_1').click(function() { //display menu メニュー1
+		  menu(data_1);
+		  setCommands(1);
+		});
+		$('#menu_2').click(function() { //display menu メニュー2
+		  menu(data_2);
+		  setCommands(2);
+		});
+
+		$('#button2').click(function() { //example button click function
+		  body = {
+		  	'title':'sample info',
+		  	'value':100
+		  }
+		  //sample object ready for CRUD functions
+		  console.log(body);
+		});
+			
+		//left menu behavior	
+		$(".list-group-item").mouseover(function(){
+		    $(this).css({
+		        "background-color" :　"#bec3ca",
+		        "cursor" : "pointer"
+		    });
+		 });
+		 $(".list-group-item").mouseout(function(){
+		    $(this).css({
+		        "background-color" : "transparent",
+		        "cursor" : "default"
+		    });
+
+		 });	
+
+	});
+
+	</script>
+
+{% endblock %}
