@@ -23,7 +23,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-          <!-- Set class active if this page/menu was selected, use jquery for functionalities-->
+          <!-- Set class active if this page/menu was selected according to maintenance.py routes-->
           <li class="nav-item {% if menu_1 %} active {% endif %}"> 
            <a class="nav-link" href="{{ url_for('maintenance.index') }}">Index</a>
           </li>
