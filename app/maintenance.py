@@ -36,6 +36,8 @@ def get_menu_data():
 	data_2 = [{"Select":"<input type='checkbox' id='checkbox1' name='checbox1' value=''>", "題名_1":"data", "題名_2":"46", "題名_3":"46", "題名_4":"データ", "題名_5":"7/1/2020"},
 					   {"Select":"<input type='checkbox' id='checkbox1' name='checbox1' value=''>", "題名_1":"data", "題名_2":"46", "題名_3":"46", "題名_4":"データ", "題名_5":"7/1/2020"},
 					   {"Select":"<input type='checkbox' id='checkbox1' name='checbox1' value=''>", "題名_1":"data", "題名_2":"46", "題名_3":"46", "題名_4":"データ", "題名_5":"7/1/2020"}]
+	# Hi Joeff you can add switch or if statement here depends of what menu selected
+	# for this example let's say the selected menu is 2.
 	return jsonify(data_2)
 
 
