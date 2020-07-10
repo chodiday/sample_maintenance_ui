@@ -4,6 +4,7 @@ from flask import (
 from werkzeug.exceptions import abort
 
 from app.auth import login_required
+from flask import jsonify
 #import database modules and other db tools here depends on the specs.
 #from app.db import get_db
 
@@ -26,5 +27,17 @@ def index_a():
 @login_required
 def index_b():
 	return render_template('maintenance/index_b.html', dropdown=True, menu_2 = True) #2nd nav-bar item '特徴' page
+
+# ++++++++++++++++++++++++++++++++++enhancement++++++++++++++++++++++++++++
+@bp.route("/data", methods=["GET"])		
+@login_required
+def get_menu_data():
+	print("You select menu : " + request.args['menu'])
+	data_2 = [{"Select":"<input type='checkbox' id='checkbox1' name='checbox1' value=''>", "題名_1":"data", "題名_2":"46", "題名_3":"46", "題名_4":"データ", "題名_5":"7/1/2020"},
+					   {"Select":"<input type='checkbox' id='checkbox1' name='checbox1' value=''>", "題名_1":"data", "題名_2":"46", "題名_3":"46", "題名_4":"データ", "題名_5":"7/1/2020"},
+					   {"Select":"<input type='checkbox' id='checkbox1' name='checbox1' value=''>", "題名_1":"data", "題名_2":"46", "題名_3":"46", "題名_4":"データ", "題名_5":"7/1/2020"}]
+	return jsonify(data_2)
+
+
 
 

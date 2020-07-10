@@ -79,9 +79,10 @@
 					   {"Select":"<input type='checkbox' id='checkbox1' name='checbox1' value=''>", "Title_1":"data", "Title_2":"46", "Title_3":"46", "Title_4":"sample data", "Title_5":"				7/1/2020", "Title_6":"データ", "Title_7":"データ"},
 					   {"Select":"<input type='checkbox' id='checkbox1' name='checbox1' value=''>", "Title_1":"data", "Title_2":"46", "Title_3":"46", "Title_4":"sample data", "Title_5":"7/1/2020", "Title_6":"データ", "Title_7":"データ"}]
 
-			//sample of data came from flask maintenance.py.
-			var data_2 = {{ data_2 | tojson}}
-
+		//sample of data came from flask maintenance.py.
+		// var data_2 = {{ data_2 | tojson}}
+		//+++++++++++++++++++++++++++++++++enhancement++++++++++++++++++++++++++++++
+		var $j = jQuery.noConflict();		
 
         var setCommands = function(num) {
         	//In this example we have 7 menus under index page & 2 commands has been declared.
@@ -111,6 +112,18 @@
 			$('tbody').append(row)
 		}			   
 
+		//++++++++++++++++++++++++++++++++++enhancement++++++++++++++++++++++++++++++++++++++++++	
+		var get_data = function(menu_number) {
+			$.get( "/data", { menu: menu_number }, function (data){
+				if(data){
+					console.log(data)
+					menu(data);	//by the joeff you may change this menu function name to table_display() since this menu function purposes is to display table data.
+				}
+			}).fail(function() {
+			    alert('Error in getting the data.');
+			});	
+		}	
+
 		menu(data_1); //initial display
 		setCommands(1); //initial buttons display
 
@@ -119,8 +132,9 @@
 		  setCommands(1);
 		});
 		$('#menu_2').click(function() { //display menu メニュー2
-		  menu(data_2);
-		  setCommands(2);
+		  get_data(2);
+		  setCommands(2);	
+
 		});
 
 		$('#button2').click(function() { //example button click function
