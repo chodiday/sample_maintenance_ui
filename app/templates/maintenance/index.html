@@ -114,8 +114,8 @@
 
 		//++++++++++++++++++++++++++++++++++enhancement++++++++++++++++++++++++++++++++++++++++++	
 		var get_data = function(menu_number) {
-			$.get( "/data", { menu: menu_number }, function (data){
-				if(data){
+			$.get( "/data", { menu: menu_number }, function (data) {
+				if(data) {
 					console.log(data)
 					menu(data);	//by the joeff you may change this menu function name to table_display() since this menu function purposes is to display table data.
 				}
